@@ -1,7 +1,7 @@
 # NBA Player Field Goal Visualization
 -Designed a shot dashboard with React, D3, and Ant Design 
 -Visualize individual player shooting data  
-
+![demo](https://raw.githubusercontent.com/MoonSulong/NBAVis/master/img/nba.gif)
 
 ## Getting Started
 

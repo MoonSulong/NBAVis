@@ -1,41 +1,31 @@
 import React from 'react';
-
-import {
-    Slider, InputNumber, Row, Col,
-} from 'antd';
+import { Slider, InputNumber, Row, Col } from 'antd';
 
 export class CountSlider extends React.Component {
     state = {
-        inputValue: this.props.value,
+        inputValue: this.props.value
     }
 
     onChange = (value) => {
+        const cleanValue = Number(value) ? value: this.state.inputValue;
         this.setState({
-            inputValue: value,
+            inputValue: cleanValue,
         });
-        this.props.onChange(value);
+        this.props.onCountSliderChange(cleanValue);
     }
 
     render() {
-        const { inputValue } = this.state;
-        const value = typeof inputValue === 'number' ? inputValue : 0;
-
         return (
             <Row>
                 <Col span={12}>
-                    <Slider
-                        min={2}
-                        max={20}
-                        onChange={this.onChange}
-                        value={value}
-                    />
+                    <Slider min={1} max={20} onChange={this.onChange} value={this.state.inputValue} />
                 </Col>
                 <Col span={4}>
                     <InputNumber
-                        min={2}
+                        min={1}
                         max={20}
                         style={{ marginLeft: 16 }}
-                        value={value}
+                        value={this.state.inputValue}
                         onChange={this.onChange}
                     />
                 </Col>
@@ -43,3 +33,5 @@ export class CountSlider extends React.Component {
         );
     }
 }
+
+export default CountSlider;
